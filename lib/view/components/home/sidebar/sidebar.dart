@@ -30,6 +30,9 @@ class SideBar extends GetView<HomeLayoutController> {
                       InkWell(
                         onTap: (){
                           controller.changeContent(0);
+                          controller.changeCurrentPrimarySideBar(-1,-1);
+                          controller.toggleExpandedSidebar(-1);
+
                         },
                         child: Image.asset(
                           AppImageAsset.voyago,
@@ -288,6 +291,12 @@ class SideBar extends GetView<HomeLayoutController> {
     );
   }
 }
+
+
+
+
+
+
 
 
 

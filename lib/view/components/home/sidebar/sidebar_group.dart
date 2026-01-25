@@ -98,7 +98,6 @@ class SidebarGroup extends StatelessWidget {
   }
 }
 
-
 class SidebarGroupCollapsed extends StatelessWidget {
   final int index;
   final IconData icon;
