@@ -115,114 +115,128 @@ class SidebarGroupCollapsed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomeLayoutController>();
-    OverlayEntry? overlayEntry;
-    bool isHoveringDropdown = false;
+    return GetBuilder<HomeLayoutController>(
+      builder: (controller) {
+        OverlayEntry? overlayEntry;
+        bool isHoveringDropdown = false;
 
-    bool isSelected =
-        controller.currentPrimarySideBar == index && controller.selectedChildIndex != -1;
+        bool isSelected =
+            controller.currentPrimarySideBar == index &&
+                controller.selectedChildIndex != -1;
 
-    void removeOverlay() {
-      overlayEntry?.remove();
-      overlayEntry = null;
-    }
+        void removeOverlay() {
+          overlayEntry?.remove();
+          overlayEntry = null;
+        }
 
-    void showOverlay(RenderBox box) {
-      final position = box.localToGlobal(Offset.zero);
+        void showOverlay(RenderBox box) {
+          final position = box.localToGlobal(Offset.zero);
 
-      overlayEntry = OverlayEntry(
-        builder: (_) => Positioned(
-          left: position.dx + 50,
-          top: position.dy,
-          child: MouseRegion(
-            onEnter: (_) => isHoveringDropdown = true,
-            onExit: (_) {
-              isHoveringDropdown = false;
-              removeOverlay();
-            },
-            child: Material(
-              color: Colors.transparent,
-              child: Container(
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 4)],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Parent title at top
-                    Container(
-                      color: const Color(0xFF33C8CE),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: Text(
-                        title,
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
+          overlayEntry = OverlayEntry(
+            builder: (_) => Positioned(
+              left: position.dx + 50,
+              top: position.dy,
+              child: MouseRegion(
+                onEnter: (_) => isHoveringDropdown = true,
+                onExit: (_) {
+                  isHoveringDropdown = false;
+                  removeOverlay();
+                },
+                child: Material(
+                  color: Colors.transparent,
+                  child: Container(
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF212D3B),
+                      borderRadius: BorderRadius.circular(5),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.black26, blurRadius: 4)
+                      ],
                     ),
-                    // Children
-                    ...children.map((child) {
-                      return InkWell(
-                        onTap: () {
-                          // If sidebar is collapsed, open it
-                          if (!controller.isOpen) {
-                            controller.toggleSideBar();
-                          }
-                          child.onTap(); // execute original child action
-                          removeOverlay();
-                        },
-                        child: Container(
-                          height: 30,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(child.icon, color: Colors.white, size: 16),
-                              const SizedBox(width: 8),
-                              Text(
-                                child.title,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ],
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Parent title
+                        Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Text(
+                            title,
+                            style:  TextStyle(
+                              color: isSelected ? Colors.white  :Colors.grey[400],
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ],
+
+                        // Children
+                        ...children.map((child) {
+                          return InkWell(
+                            onTap: () {
+                              if (!controller.isOpen) {
+                                controller.toggleSideBar();
+                              }
+                              child.onTap();
+                              removeOverlay();
+                            },
+                            child: Container(
+                              height: 32,
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 16),
+                              child: Row(
+                                children: [
+                                  Icon(child.icon,
+                                      color: isSelected ? Colors.white : Colors.grey[400], size: 16),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    child.title,
+                                    style:  TextStyle(color: isSelected ? Colors.white : Colors.grey[400]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      );
+          );
 
-      Overlay.of(context).insert(overlayEntry!);
-    }
+          Overlay.of(context).insert(overlayEntry!);
+        }
 
-    return Builder(builder: (context) {
-      return MouseRegion(
-        onEnter: (_) {
-          if (overlayEntry == null) {
-            final box = context.findRenderObject() as RenderBox;
-            showOverlay(box);
-          }
-        },
-        onExit: (_) {
-          Future.delayed(const Duration(milliseconds: 100), () {
-            if (!isHoveringDropdown) removeOverlay();
-          });
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Icon(
-            icon,
-            color: isSelected ? const Color(0xFF33C8CE) : Colors.white,
-          ),
-        ),
-      );
-    });
+        return Builder(
+          builder: (context) {
+            return MouseRegion(
+              onEnter: (_) {
+                if (overlayEntry == null) {
+                  final box =
+                  context.findRenderObject() as RenderBox;
+                  showOverlay(box);
+                }
+              },
+              onExit: (_) {
+                Future.delayed(const Duration(milliseconds: 100), () {
+                  if (!isHoveringDropdown) removeOverlay();
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Icon(
+                  icon,
+                  color: isSelected
+                      ? const Color(0xFF33C8CE)
+                      : Colors.grey[400],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }
 

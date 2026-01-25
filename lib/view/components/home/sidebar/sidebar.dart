@@ -50,123 +50,6 @@ class SideBar extends GetView<HomeLayoutController> {
                   ),
                 ),
               ),
-              // Expanded(
-              //   child: AnimatedSwitcher(
-              //     duration: const Duration(milliseconds: 300),
-              //     child: controller.isOpen
-              //         ? ListView(
-              //       key: const ValueKey('open_sidebar'),
-              //       children: [
-              //         const SizedBox(height: 10,),
-              //         SidebarGroup(
-              //           icon: Icons.person,
-              //           title: 'users'.tr,
-              //           index: 1,
-              //           children: [
-              //             SidebarItem(
-              //                 title: 'add_user'.tr,
-              //                 icon: Icons.add,
-              //                 selected: true,
-              //                 color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 1 ? Color(0xFF3E4B5C) : Colors.transparent,
-              //                 onTap: () {
-              //                   controller.manageUsersController.openAddDialog();
-              //                   //Get.find<ManageUsersController>().openAddDialog();
-              //                   //controller.openAddDialog();
-              //                   //controller.changeContent(2);
-              //                   controller.changeCurrentPrimarySideBar(1, 0); // parent=1, child=0
-              //
-              //                 }
-              //             ),
-              //             SidebarItem(
-              //                 title: 'manage_users'.tr,
-              //                 icon: Icons.menu,
-              //                 selected: true,
-              //                 color: controller.selectedChildIndex == 1 && controller.currentPrimarySideBar == 1 ? Color(0xFF3E4B5C) : Colors.transparent,
-              //
-              //                 onTap: (){
-              //                   controller.changeCurrentPrimarySideBar(1, 1); // parent=1, child=0
-              //                   controller.changeContent(2);
-              //                   //controller.changeChildItemSideBar(2);
-              //                 }
-              //             ),
-              //           ],
-              //         ),
-              //         Divider(
-              //           height: 1,
-              //           thickness: 1.3,
-              //           color: Colors.white.withOpacity(0.1),
-              //         ),
-              //         SidebarGroup(
-              //           icon: Icons.settings,
-              //           title: 'merchants'.tr,
-              //           index: 2,
-              //           children: [
-              //           ],
-              //         ),
-              //         Divider(
-              //           height: 1,
-              //           thickness: 0.5,
-              //           color: Colors.white.withOpacity(0.1),
-              //         ),
-              //         SidebarGroup(
-              //           icon: Icons.menu_sharp,
-              //           title: 'orders'.tr,
-              //           index: 3,
-              //           children: [
-              //           ],
-              //         ),
-              //         Divider(
-              //           height: 1,
-              //           thickness: 0.5,
-              //           color: Colors.white.withOpacity(0.1),
-              //         ),
-              //         SidebarGroup(
-              //           icon: Icons.settings,
-              //           title: 'settings'.tr,
-              //           index: 4,
-              //           children: [
-              //           ],
-              //         ),
-              //         Divider(
-              //           height: 1,
-              //           thickness: 0.5,
-              //           color: Colors.white.withOpacity(0.1),
-              //         ),
-              //         SidebarGroup(
-              //           icon: Icons.shopping_cart,
-              //           title: 'delivery_agents'.tr,
-              //           index: 5,
-              //           children: [
-              //           ],
-              //         ),
-              //         Divider(
-              //           height: 1,
-              //           thickness: 0.5,
-              //           color: Colors.white.withOpacity(0.1),
-              //         ),
-              //         SidebarGroup(
-              //           icon: Icons.menu_sharp,
-              //           title: 'constant'.tr,
-              //           index: 6,
-              //           children: [
-              //             SidebarItem(
-              //               title: 'manage_cities'.tr,
-              //               icon: Icons.location_city,
-              //               selected: true,
-              //               color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 6  ? Color(0xFF3E4B5C) : Colors.transparent,
-              //
-              //               onTap: () {
-              //                 controller.changeCurrentPrimarySideBar(6, 0); // parent=1, child=0
-              //                 controller.changeContent(1);
-              //               },
-              //             ),
-              //           ],
-              //         ),
-              //       ],
-              //     )
-              //         : const SizedBox(),
-              //   ),
-              // ),
               Expanded(
                 child: controller.isOpen
                     ? ListView(
@@ -212,7 +95,7 @@ class SideBar extends GetView<HomeLayoutController> {
                               color: Colors.white.withOpacity(0.1),
                             ),
                             SidebarGroup(
-                              icon: Icons.settings,
+                              icon: Icons.settings_suggest,
                               title: 'merchants'.tr,
                               index: 2,
                               children: [
@@ -260,7 +143,7 @@ class SideBar extends GetView<HomeLayoutController> {
                               color: Colors.white.withOpacity(0.1),
                             ),
                             SidebarGroup(
-                              icon: Icons.menu_sharp,
+                              icon: Icons.menu_open,
                               title: 'constant'.tr,
                               index: 6,
                               children: [
