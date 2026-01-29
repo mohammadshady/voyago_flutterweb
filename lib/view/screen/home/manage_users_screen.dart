@@ -14,29 +14,31 @@ class ManageUsersScreen extends StatelessWidget {
     ManageUsersController controller = Get.put(ManageUsersController());
     return Padding(
       padding: const EdgeInsets.all(15.0),
-      child: Column(
-        children: [
-          GetBuilder<ManageUsersController>(
-              builder: (controller){
-                return CustomTitle(title: 'manage_users', count: controller.total);
-              }
-          ),
-          Row(
-            children: [
-              SearchField(controller: controller.searchController,onPressed: (){},),
-              const SizedBox(width: 12),
-              const Spacer(),
-              CustomAddButton(
-                onPressed: (){
-                  controller.openAddDialog();
-                },
-              ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            GetBuilder<ManageUsersController>(
+                builder: (controller){
+                  return CustomTitle(title: 'manage_users', count: controller.total);
+                }
+            ),
+            Row(
+              children: [
+                SearchField(controller: controller.searchController,onPressed: (){controller.fetchPage();},),
+                const SizedBox(width: 12),
+                const Spacer(),
+                CustomAddButton(
+                  onPressed: (){
+                    controller.openAddDialog();
+                  },
+                ),
 
 
-            ],
-          ),
-          const UserPage(),
-        ],
+              ],
+            ),
+            const UserPage(),
+          ],
+        ),
       ),
     );
   }

@@ -26,8 +26,16 @@ class HandlingDataRequest extends StatelessWidget {
      }else if(statusRequest == StatusRequest.serverFailure){
        return Stack(
          children: [
-           //
            widget,
+           Positioned.fill(
+             child: Container(
+               color: Colors.black.withOpacity(0.1),
+               child: const Center(
+                 child: Text('Server Error!'),
+               ),
+             ),
+           ),
+
          ],
        );
      }else{

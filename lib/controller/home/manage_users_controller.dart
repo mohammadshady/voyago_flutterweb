@@ -77,7 +77,9 @@ class ManageUsersController extends PaginationController<UserModel> {
         currentPage = meta['current_page'];
         lastPage = meta['last_page'];
         perPage = meta['per_page'];
-        total = meta['total'];
+        total = meta['total'] ;
+      }else if(response['status'] == 'failure'){
+        total = 0;
       }
     }
     update();

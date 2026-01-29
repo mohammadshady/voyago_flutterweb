@@ -68,7 +68,7 @@ class SideBar extends GetView<HomeLayoutController> {
                                     title: 'add_user'.tr,
                                     icon: Icons.add,
                                     selected: true,
-                                    color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 1 ? Color(0xFF3E4B5C) : Colors.transparent,
+                                    color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 1 ? const Color(0xFF3E4B5C) : Colors.transparent,
                                     onTap: () {
                                       controller.manageUsersController.openAddDialog();
                                       //Get.find<ManageUsersController>().openAddDialog();
@@ -82,7 +82,7 @@ class SideBar extends GetView<HomeLayoutController> {
                                     title: 'manage_users'.tr,
                                     icon: Icons.menu,
                                     selected: true,
-                                    color: controller.selectedChildIndex == 1 && controller.currentPrimarySideBar == 1 ? Color(0xFF3E4B5C) : Colors.transparent,
+                                    color: controller.selectedChildIndex == 1 && controller.currentPrimarySideBar == 1 ? const Color(0xFF3E4B5C) : Colors.transparent,
 
                                     onTap: (){
                                       controller.changeCurrentPrimarySideBar(1, 1); // parent=1, child=0
@@ -154,7 +154,7 @@ class SideBar extends GetView<HomeLayoutController> {
                                   title: 'manage_cities'.tr,
                                   icon: Icons.location_city,
                                   selected: true,
-                                  color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 6  ? Color(0xFF3E4B5C) : Colors.transparent,
+                                  color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 6  ? const Color(0xFF3E4B5C) : Colors.transparent,
 
                                   onTap: () {
                                     controller.changeCurrentPrimarySideBar(6, 0); // parent=1, child=0
@@ -190,77 +190,72 @@ class SideBar extends GetView<HomeLayoutController> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4.0),
                       child: Divider(
                         height: 1,
                         thickness: 0.5,
                         color: Colors.grey,//.withOpacity(0.1),
                       ),
                     ),
-
                     SidebarGroupCollapsed(
                       index: 2,
                       icon: Icons.settings,
                       title: 'merchants'.tr,
                       children: [],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4.0),
                       child: Divider(
                         height: 1,
                         thickness: 0.5,
                         color: Colors.grey,//.withOpacity(0.1),
                       ),
                     ),
-
                     SidebarGroupCollapsed(
                       index: 3,
                       icon: Icons.menu_sharp,
                       title: 'orders'.tr,
                       children: [],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4.0),
                       child: Divider(
                         height: 1,
                         thickness: 0.5,
                         color: Colors.grey,//.withOpacity(0.1),
                       ),
                     ),
-
                     SidebarGroupCollapsed(
                       index: 4,
                       icon: Icons.settings,
                       title: 'settings'.tr,
                       children: [],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4.0),
                       child: Divider(
                         height: 1,
                         thickness: 0.5,
                         color: Colors.grey,//.withOpacity(0.1),
                       ),
                     ),
-
                     SidebarGroupCollapsed(
-                      index: 2,
+                      index: 5,
                       icon: Icons.shopping_cart,
                       title: 'delivery_agents'.tr,
                       children: [],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4.0),
                       child: Divider(
                         height: 1,
                         thickness: 0.5,
                         color: Colors.grey,//.withOpacity(0.1),
                       ),
                     ),
-
                     SidebarGroupCollapsed(
-                      index: 2,
+                      index: 6,
                       icon: Icons.location_city,
                       title: 'manage_cities'.tr,
                       children: [
@@ -268,7 +263,7 @@ class SideBar extends GetView<HomeLayoutController> {
                           title: 'manage_cities'.tr,
                           icon: Icons.location_city,
                           selected: true,
-                          color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 6  ? Color(0xFF3E4B5C) : Colors.transparent,
+                          color: controller.selectedChildIndex == 0 && controller.currentPrimarySideBar == 6  ? const Color(0xFF3E4B5C) : Colors.transparent,
 
                           onTap: () {
                             controller.changeCurrentPrimarySideBar(6, 0); // parent=1, child=0
@@ -279,7 +274,6 @@ class SideBar extends GetView<HomeLayoutController> {
                       ],
                     ),
 
-                    // add more collapsed icons
                   ],
                 ),
               ),

@@ -77,7 +77,6 @@ class ManageCitiesController extends PaginationController<CityModel> {
     cities.clear();
     statusRequest = StatusRequest.loading;
     update();
-    print('===============$status');
     var response = await cityData.getCities(page,status,searchController.text);
     statusRequest = handlingData(response);
     if(statusRequest == StatusRequest.success){
@@ -89,9 +88,9 @@ class ManageCitiesController extends PaginationController<CityModel> {
         lastPage = meta['last_page'];
         perPage = meta['per_page'];
         total = meta['total'];
+      }else if(response['status'] == 'failure'){
+        total = 0;
       }
-      print("-----------------${response['meta']}");
-      print("=================${response['data']}");
     }
     update();
   }
